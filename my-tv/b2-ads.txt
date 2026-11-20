@@ -1,0 +1,9 @@
+# batch 2: TCL/Google content, ads, promo rows (from examples/tcl-55s546-us)
+com.tcl.dashboard
+com.tcl.partnercustomizer
+com.tcl.messagebox
+com.tcl.esticker
+com.tcl.waterfall.overseas
+android.autoinstalls.config.google.gtvpai
+com.google.android.partnersetup
+com.google.android.onetimeinitializer

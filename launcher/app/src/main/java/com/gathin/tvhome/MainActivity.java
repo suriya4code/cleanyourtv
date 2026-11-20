@@ -453,6 +453,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private java.util.Map<Integer, String> homeAppKeys = java.util.Collections.emptyMap();
     /** clock_format, for the race panel's session times (the TextClocks take it in onCreate). */
     private String clockFormat = "system";
+    private Weather weather;
     private java.util.Map<Integer, String> homeHoldAppKeys = java.util.Collections.emptyMap();
 
     @Override
@@ -577,6 +578,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         btnWifi = findViewById(R.id.btnWifi);
         shamsiDate = findViewById(R.id.shamsiDate);
         stats = findViewById(R.id.stats);
+        weather = Weather.create(this, () -> ClockFormat.is24(this, clockFormat));
         raceCalendar = cfg.raceCalendar;
         racePanel = findViewById(R.id.racePanel);
         raceKicker = findViewById(R.id.raceKicker);
@@ -767,6 +769,24 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 }
             }
         });
+
+        // Personal build: the next row no longer peeks in under the dock. While the grid sits at the top it is
+        // clipped just under the first (dock) row; once Down scrolls it, the clip comes off. onScrolled also runs
+        // with 0/0 after every layout, so the clip follows padding and tile-size changes.
+        if (dockRow && !singleRow) {
+            grid.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrolled(@NonNull RecyclerView rv, int dx, int dy) {
+                    View first = rv.getLayoutManager() == null ? null : rv.getLayoutManager().findViewByPosition(0);
+                    if (first == null || rv.canScrollVertically(-1)) {
+                        rv.setClipBounds(null);
+                        return;
+                    }
+                    int big = rv.getWidth() + rv.getHeight();
+                    rv.setClipBounds(new Rect(-big, -big, rv.getWidth() + big, first.getBottom() + (int) (8 * density)));
+                }
+            });
+        }
 
         // game_day: the panel above the dock rides up with the cards instead of being covered by them, and fades
         // out by the time it reaches the clock. The grid's own offset is read, so a jump (Home, a restored focus)
@@ -1085,6 +1105,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         updateClockVisibility();
         clockRefresh.start();   // with timeReceiver: while Home is visible, paused or not
         tileRefresh.onStart();
+        if (weather != null) weather.start();
     }
 
     @Override
@@ -1341,6 +1362,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         handler.removeCallbacks(clockCheck);
         stopped = true;
         tileRefresh.onStop();
+        if (weather != null) weather.stop();
     }
 
     /**

@@ -1,0 +1,11 @@
+{
+  "wallpaper": true,
+  "wallpaper_rotation_minutes": 1,
+  "wallpaper_order": "shuffle",
+  "wallpaper_true_color": true,
+  "wallpaper_dim": 0,
+  "ambient_glow": false,
+  "header_white": true,
+  "dock_band": false,
+  "dock_title": false
+}

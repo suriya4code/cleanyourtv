@@ -1,0 +1,8 @@
+# batch 4: preloaded streaming apps the owner does not use (YouTube kept)
+com.netflix.ninja
+com.amazon.amazonvideo.livingroom
+com.google.android.youtube.tvmusic
+com.google.android.videos
+com.tcl.tv.tclchannel
+com.tcl.tv.plus
+com.tcl.channelplus

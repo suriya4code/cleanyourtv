@@ -1,0 +1,3 @@
+# batch 6: Google TV first-run wizard; claims HOME once launcherx is off. Re-enable it before a factory reset.
+# Its one saved network (a hidden 2.4 GHz SSID, not the one in use) was forgotten first, with the owner's OK.
+com.google.android.tungsten.setupwraith

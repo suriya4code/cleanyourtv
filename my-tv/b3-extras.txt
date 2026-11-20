@@ -1,0 +1,10 @@
+# batch 3: background services and preloaded extras (owner: no TCL account, no USB media player)
+com.tcl.guard
+com.tcl.usercenter
+com.tcl.ocean.instructions
+com.tcl.android.webview
+org.chromium.webview_shell
+com.google.android.syncadapters.calendar
+com.google.android.play.games
+com.tcl.gallery
+com.tcl.ui_mediaCenter

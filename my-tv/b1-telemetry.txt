@@ -1,0 +1,4 @@
+# TCL 55" G03_4K_US_NF (BeyondTV4) AR21 - batch 1: telemetry (from examples/tcl-55s546-us)
+com.tcl.bi
+com.tcl.xian.StartandroidService
+com.google.android.feedback

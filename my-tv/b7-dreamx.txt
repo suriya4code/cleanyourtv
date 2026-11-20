@@ -1,0 +1,2 @@
+# batch 7: Google ambient screensaver (promos); screensaver switched to com.gathin.tvhome/.ClockDream first
+com.google.android.apps.tv.dreamx

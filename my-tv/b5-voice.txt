@@ -1,0 +1,5 @@
+# batch 5: voice assistants, all off by choice (the remote's mic button stops working)
+com.tcl.smartalexa
+com.tcl.assistant
+com.google.android.katniss
+com.google.android.tv.assistant
